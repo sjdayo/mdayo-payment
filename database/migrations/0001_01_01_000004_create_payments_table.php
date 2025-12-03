@@ -25,6 +25,7 @@ return new class extends Migration
             $table->morphs('owner');
             $table->foreignId('payment_provider_id')->constrained('payment_providers')->onDelete('restrict');
             $table->string('type')->default('bank');
+            $table->string('account_number_hash');
             $table->string('account_number');
             $table->string('account_holder_name');
             $table->string('status')->default('active');
@@ -32,8 +33,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Composite unique index
-            $table->unique(['owner_id', 'payment_provider_id', 'account_number'], 'user_payment_account_unique');
-
+            $table->unique(['owner_id', 'payment_provider_id', 'account_number_hash'], 'user_payment_account_unique');
         });
         
     }

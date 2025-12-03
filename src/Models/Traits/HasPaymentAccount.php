@@ -16,9 +16,10 @@ trait HasPaymentAccount
     }
     public function createPaymentAccount(PaymentProvider $payment_provider,string $account_number, string $account_holder_name)
     {
+        $account_number_hash = hash('sha256', $account_number);
         return $this->paymentAccount()->firstOrCreate([
             'payment_provider_id'=>$payment_provider->id,
-            'account_number'=>$account_number,
-        ],['account_holder_name'=> $account_holder_name]);
+            'account_number_hash'=> $account_number_hash,
+        ],['account_number'=>$account_number,'account_holder_name'=> $account_holder_name]);
     }
 }
