@@ -1,6 +1,6 @@
 <?php
 
-namespace Mdayo\User;
+namespace Mdayo\Payment;
 
 use Illuminate\Support\ServiceProvider;
 
