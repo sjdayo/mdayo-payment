@@ -8,6 +8,10 @@ class PaymentAccount extends Model
     use HasStatus;
 
     protected $guarded = [];
+    
+    protected $casts = [
+        'account_number' => 'encrypted', // automatically encrypt/decrypt
+    ];
     public function owner()
     {
         return $this->morphTo();
