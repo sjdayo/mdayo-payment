@@ -18,7 +18,6 @@ trait HasPaymentAccount
     {
         return $this->paymentAccount()->firstOrCreate([
             'payment_provider_id'=>$payment_provider->id,
-            'payment_provider_type'=>$payment_provider::class,
             'account_number'=>$account_number,
         ],['account_holder_name'=> $account_holder_name]);
     }
