@@ -10,11 +10,11 @@ class PaymentAccount extends Model
     protected $guarded = [];
     public function owner()
     {
-        $this->morphTo();
+        return $this->morphTo();
     }
     public function paymentProvider()
     {
-        $this->belongsTo(PaymentProvider::class,'payment_provider_id');
+        return $this->belongsTo(PaymentProvider::class,'payment_provider_id');
     }
    
 }
